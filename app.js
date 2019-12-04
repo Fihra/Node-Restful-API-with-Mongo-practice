@@ -2,6 +2,11 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
+//Import Routes
+const postsRoute = require('./routes/posts');
+
+//Middleware to start route when URL is '/posts'
+app.use('/posts', postsRoute);
 
 //Middlewares
 // app.use('/posts', () => {
@@ -11,10 +16,6 @@ const mongoose = require('mongoose');
 //ROUTES
 app.get('/', (req, res) => {
     res.send("Hello World");
-})
-
-app.get('/posts', (req, res) => {
-    res.send("We are on posts");
 })
 
 //Connect to DB
