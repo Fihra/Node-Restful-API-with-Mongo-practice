@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
 
 //Import Routes
 const postsRoute = require('./routes/posts');
@@ -19,7 +22,7 @@ app.get('/', (req, res) => {
 })
 
 //Connect to DB
-mongoose.connect('localhost:27017/UserDB', {useNewUrlParser: true}, () => {
+mongoose.connect('mongodb://localhost:27017/UserDB', {useNewUrlParser: true}, () => {
     console.log("Connected to DB!");
 });
 
